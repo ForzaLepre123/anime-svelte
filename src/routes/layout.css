@@ -1,0 +1,31 @@
+@import 'tailwindcss';
+
+body {
+    background: black;
+    color: white;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    overflow: hidden auto;
+    scroll-behavior: smooth;
+    color-scheme: dark;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-snap-align: start;
+    scroll-snap-type: x mandatory;
+}
+
+.hljs {
+    border-radius: var(--radius-2xl);
+    background: none !important;
+}
+
+.example .hljs {
+    padding: 0;
+    background: none;
+}
+
+@theme {
+    --breakpoint-mid: 1140px;
+}
