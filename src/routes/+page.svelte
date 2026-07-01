@@ -28,7 +28,7 @@
 <Nav/>
 {#if browser}
   <main id="scroll-container" class="scroll-smooth container flex flex-col mx-auto px-3 max-w-200 w-[calc(100vw-0.5rem)] items-center justify-start overflow-y-auto overflow-x-hidden pb-8">
-    <Animate class="flex h-dvh min-h-dvh flex-col items-center justify-center transform-3d perspective-normal" params={{
+    <Animate class="flex h-svh min-h-svh flex-col items-center justify-center transform-3d perspective-normal" params={{
       translateY: [0, 'calc(50% - 6.5rem)'],
       scale: [1, 0.9],
       opacity: [1, 0.5],
@@ -85,8 +85,8 @@
       <h3 class="text-2xl font-semibold pt-8 pb-1" id="overview-install">Installation</h3>
       <p class="pb-2 pt-2">Install anime-svelte:</p>
       <Code code="npm install anime-svelte"/>
-      <p class="pb-2 pt-3">and anime.js:</p>
-      <Code code="npm install anime-js"/>
+      <p class="pb-2 pt-3">or</p>
+      <Code code="pnpm add anime-svelte"/>
       <span class="h-px w-full bg-gray-600/40 my-8"></span>
 
       <h2 class="text-3xl font-semibold pb-2" id="components">Components</h2>
