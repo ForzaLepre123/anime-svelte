@@ -441,7 +441,7 @@ params={{
       </Example>
     </section>
   </main>
-  <footer class="footer w-full h-32 bg-gray-600/40 flex justify-end items-end">
+  <footer class="footer w-full max-h-32 min-h-32 h-32 bg-gray-600/40 flex justify-end items-end">
     <section
       class="sticky bottom-0 left-0 right-0 mx-auto px-3 max-w-200 w-200 h-16 flex items-center justify-between"
       {@attach animate({
