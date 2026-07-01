@@ -36,7 +36,7 @@
         axis: 'y',
         enter: 'top top',
         leave: 'top bottom',
-        sync: 0.75,
+        sync: true,
       }),
       ease: 'outQuad'
     }} animated={exampleAnimate1}>
