@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { onScroll } from 'animejs';
 	import { animate } from '$lib/index.js';
 	import { expoOut } from 'svelte/easing';
@@ -19,25 +18,24 @@
 
 	function toggleMenu() {
 		visible = !visible;
-
-		if (visible) {
-			topAnimationOpen?.beginElement();
-			bottomAnimationOpen?.beginElement();
-		} else {
-			topAnimationClose?.beginElement();
-			bottomAnimationClose?.beginElement();
-		}
 	}
+  
+  $effect(() => {
+    if (visible) {
+      topAnimationOpen?.beginElement();
+      bottomAnimationOpen?.beginElement();
+    } else {
+      topAnimationClose?.beginElement();
+      bottomAnimationClose?.beginElement();
+    }
+  });
 
-	onMount(() => {
+	$effect(() => {
 		const onResize = () => {
-			if (window.innerWidth >= MOBILE_BREAKPOINT) {
-				visible = false;
-			}
+			if (window.innerWidth >= MOBILE_BREAKPOINT) visible = false;
 		};
 
 		window.addEventListener('resize', onResize);
-		onResize();
 
 		return () => window.removeEventListener('resize', onResize);
 	});
@@ -52,15 +50,15 @@
 		<div class="mx-4 flex flex-col rounded-3xl bg-gray-600/20 py-4">
 			<button
 				onclick={() => {
-					void goto('#overview');
-					visible = false;
+					goto('#overview');
+					toggleMenu();
 				}}
 				class="px-6 text-start text-2xl font-semibold">Overview</button
 			>
 			<button
 				onclick={() => {
-					void goto('#overview-install');
-					visible = false;
+					goto('#overview-install');
+					toggleMenu();
 				}}
 				class={option + ' text-start'}>Install</button
 			>
@@ -68,22 +66,22 @@
 		<div class="mx-4 flex flex-col rounded-3xl bg-gray-600/20 py-4">
 			<button
 				onclick={() => {
-					void goto('#components');
-					visible = false;
+					goto('#components');
+					toggleMenu();
 				}}
 				class="px-6 text-start text-2xl font-semibold">Components</button
 			>
 			<button
 				onclick={() => {
-					void goto('#components-animate');
-					visible = false;
+					goto('#components-animate');
+					toggleMenu();
 				}}
 				class={option + ' text-start'}>Animate</button
 			>
 			<button
 				onclick={() => {
-					void goto('#components-split');
-					visible = false;
+					goto('#components-split');
+					toggleMenu();
 				}}
 				class={option + ' text-start'}>Split</button
 			>
@@ -91,8 +89,8 @@
 		<div class="mx-4 flex flex-col rounded-3xl bg-gray-600/20 py-4">
 			<button
 				onclick={() => {
-					void goto('#transitions');
-					visible = false;
+					goto('#transitions');
+					toggleMenu();
 				}}
 				class="px-6 text-start text-2xl font-semibold">Transitions</button
 			>
@@ -100,22 +98,22 @@
 		<div class=" mx-4 flex flex-col rounded-3xl bg-gray-600/20 py-4">
 			<button
 				onclick={() => {
-					void goto('#attachments');
-					visible = false;
+					goto('#attachments');
+					toggleMenu();
 				}}
 				class="px-6 text-start text-2xl font-semibold">Attachments</button
 			>
 			<button
 				onclick={() => {
-					void goto('#attachments-animate');
-					visible = false;
+					goto('#attachments-animate');
+					toggleMenu();
 				}}
 				class={option + ' text-start'}>animate</button
 			>
 			<button
 				onclick={() => {
-					void goto('#attachments-split');
-					visible = false;
+					goto('#attachments-split');
+					toggleMenu();
 				}}
 				class={option + ' text-start'}>split</button
 			>
@@ -147,7 +145,7 @@
 	</section>
 {/if}
 <nav
-	class="fixed top-4 left-4 z-1001 max-h-fit rounded-3xl bg-gray-600/40 p-4 opacity-0 backdrop-blur-lg"
+	class="fixed top-4 right-4 mid:right-auto mid:left-4 z-1001 max-h-fit rounded-3xl bg-gray-600/40 p-4 opacity-0 backdrop-blur-lg"
 	{@attach animate({
 		opacity: [0, 1],
 		marginTop: [-64, 0],
